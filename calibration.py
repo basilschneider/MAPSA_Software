@@ -104,7 +104,9 @@ SP=0
 config = mapsa.config(Config=1,string='default')
 config.upload()
 
-
+# Basil: The 6 MPA config XML's are written from the confdict
+# Basil: THDAC controls the threshold
+#        CALDAC controls the injected charge
 confdict = {'OM':[3]*6,'RT':[0]*6,'SCW':[0]*6,'SH2':[0]*6,'SH1':[0]*6,'THDAC':[0]*6,'CALDAC':[options.charge]*6,'PML':[1]*6,'ARL':[1]*6,'CEL':[CE]*6,'CW':[0]*6,'PMR':[1]*6,'ARR':[1]*6,'CER':[CE]*6,'SP':[SP]*6,'SR':[1]*6,'TRIMDACL':[30]*6,'TRIMDACR':[30]*6}
 config.modifyfull(confdict) 
 
@@ -117,12 +119,16 @@ for x in range(0,256):
 	if x%10==0:
 		print "THDAC " + str(x)
 
+    # Basil: This loops over all 6 config XML's and sets the value for each one
+    # with the corresponding value in the list
 	config.modifyperiphery('THDAC',[x]*6)
 	config.upload()
 	config.write()
 
 	mapsa.daq().Sequencer_init(smode,sdur)
 
+    # Basil: Here the XML node Counter/MPAx/buffer_1 is read out and assigned
+    # to the variable pix; the variable mem is not used at all (?)
 	pix,mem = mapsa.daq().read_data(buffnum)
 	ipix=0
 	for p in pix:
@@ -130,6 +136,7 @@ for x in range(0,256):
 			p.pop(0)
 			p.pop(0)
 			y1.append([])
+            # Basil: y1 is what we plot in the end
 			y1[ipix].append(array('d',p))
 
 			ipix+=1
@@ -196,6 +203,7 @@ for i in range(0,6):
 				#print "ptrim " + str(prev_trim)
 				#print "halfmax " +  str(halfmax)
 				
+                # Basil: xdacval is an interpolated value where x == halfmax (?)
 				xdacval = (abs(yval-halfmax)*xval + abs(yval1-halfmax)*xval1)/(abs(yval-halfmax) + abs(yval1-halfmax))
 
 				#if abs(yval-halfmax)<abs(yval1-halfmax):
@@ -266,11 +274,11 @@ for iy1 in range(0,len(yarrv[0][0,:])):
 		upldac[u] = max(0,upldac[u])
 		upldac[u] = min(31,upldac[u])
 		if upldac[u]==31:
-			cols[u].append(2)
+            cols[u].append(2) # Basil: Red
 		elif upldac[u]==0:
-			cols[u].append(4)
+            cols[u].append(4) # Basil: Blue
 		else:
-			cols[u].append(1)
+            cols[u].append(1) # Basil: Black
 	#print upldac
 
 	if iy1%2==0:

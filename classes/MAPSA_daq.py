@@ -76,6 +76,8 @@ class MAPSA_daq:
 
 		for i in range(1,7):
 			#start = time.time()
+            # Basil: Read out 25 bits from XML node Counter/MPAx/buffer_1
+            # Basil: The length of 25 is also defined in the XML (as size="0x19")
 			counter_data  = self._counter.getNode("MPA"+str(i)).getNode("buffer_"+str(buffer_num)).readBlock(25)
 			memory_data = self._memory.getNode("MPA"+str(i)).getNode("buffer_"+str(buffer_num)).readBlock(216)
 			#end = time.time()
