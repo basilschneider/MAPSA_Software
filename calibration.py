@@ -274,11 +274,11 @@ for iy1 in range(0,len(yarrv[0][0,:])):
 		upldac[u] = max(0,upldac[u])
 		upldac[u] = min(31,upldac[u])
 		if upldac[u]==31:
-            cols[u].append(2) # Basil: Red
+			cols[u].append(2) # Basil: Red
 		elif upldac[u]==0:
-            cols[u].append(4) # Basil: Blue
+			cols[u].append(4) # Basil: Blue
 		else:
-            cols[u].append(1) # Basil: Black
+			cols[u].append(1) # Basil: Black
 	#print upldac
 
 	if iy1%2==0:
