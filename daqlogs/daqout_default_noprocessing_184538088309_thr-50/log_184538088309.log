@@ -1,0 +1,35 @@
+Firmware Version 20
+DAQ Version 1
+
+Options summary
+==================
+daqstring: thr-50
+direction: 1
+autospill: True
+monitor: False
+calib: False
+format: noprocessing
+skip: True
+mpa: 1
+number: 15
+readout: both
+record: True
+charge: 80
+setting: default
+thresh: 50
+loops: 1
+shutterdur: 500
+norm: False
+testclock: glib
+==================
+
+---------------------------------------------------------------------------
+----------------------------Starting Datataking----------------------------
+---------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------
+-----------------------------Starting spill 1------------------------------
+---------------------------------------------------------------------------
+
