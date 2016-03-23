@@ -1,6 +1,8 @@
 #Functions related to data aquisition at the MAPSA level - starting calibration and data taking 
 #as well as loops of MPA_daq readout objects for ease of use 
 
+import os
+
 from MPA import *
 from MPA_daq import *
 from MAPSA_functions import *
@@ -98,6 +100,7 @@ class MAPSA_daq:
 			#print mems[i]
 			#print counts[i]
 			counts[i],mems[i] = MPA(self._hw,i).daq().format(counts[i],mems[i])
+		os.system('mkdir -p plots')
 		with open('plots/log.out', 'a') as f:
 			f.write('Counter:\n')
 			f.write(', '.join(str(i) for i in counts))
