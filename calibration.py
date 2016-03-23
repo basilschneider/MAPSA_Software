@@ -176,7 +176,7 @@ for i in range(0,6):
 			
 			gr1[iy1].SetTitle(';DAC Value (1.456 mV);Counts (1/1.456)')
 			grarr[i].append(gr1[iy1])
-			grarr[i][iy1].Draw()
+			grarr[i][iy1].Draw('AC')
 			gr1[iy1].Write(str(iy1))
 		else:
 			grarr[i].append(gr1[iy1])
@@ -389,7 +389,7 @@ for i in range(0,6):
 				gr2[iy1].SetTitle(';DAC Value (1.456 mV);Counts (1/1.456)')
 				gr2arr[i].append(gr2[iy1])
 				gr2arr[i][iy1].SetLineColor(cols[i][iy1])
-				gr2arr[i][iy1].Draw()
+				gr2arr[i][iy1].Draw('AC')
 				gr2[iy1].Write(str(iy1))
 
 			else:
