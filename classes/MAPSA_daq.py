@@ -98,12 +98,13 @@ class MAPSA_daq:
 			#print mems[i]
 			#print counts[i]
 			counts[i],mems[i] = MPA(self._hw,i).daq().format(counts[i],mems[i])
-		print 'RAW DATA:'
-		print 'Counter:'
-		print counts
-		print 'Memory:'
-		print mems
-		print 'END RAW DATA'
+		with open('plots/log.out', 'a') as f:
+			f.write('Counter:\n')
+			f.write(', '.join(str(i) for i in counts))
+			f.write('\n')
+			f.write('Memory:\n')
+			f.write(', '.join(str(i) for i in mems))
+			f.write('\n')
 		#end = time.time()
 		#print "Formatting "
 		#print (end - start)*1000
