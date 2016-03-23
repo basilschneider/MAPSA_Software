@@ -89,10 +89,25 @@ class MAPSA_daq:
 
 
 		for i in range(0,len(counts)):
+<<<<<<< HEAD
 			counts[i],mems[i] = MPA(self._hw,i).daq().format(counts[i],mems[i],Fast)
 
 
 
+=======
+			#print mems[i]
+			#print counts[i]
+			counts[i],mems[i] = MPA(self._hw,i).daq().format(counts[i],mems[i])
+		print 'RAW DATA:'
+		print 'Counter:'
+		print counts
+		print 'Memory:'
+		print mems
+		print 'END RAW DATA'
+		#end = time.time()
+		#print "Formatting "
+		#print (end - start)*1000
+>>>>>>> Output raw data
 		return counts,mems
 
 	def read_trig(self,buffer_num=1):
