@@ -16,6 +16,10 @@ import matplotlib.pyplot as plt
 from matplotlib.pyplot import show, plot
 
 from optparse import OptionParser
+
+# ROOT batch mode
+ROOT.gROOT.SetBatch(True)
+
 parser = OptionParser()
 parser.add_option('-s', '--setting', metavar='F', type='string', action='store',
 default	=	'none',
