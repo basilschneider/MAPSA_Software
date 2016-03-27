@@ -339,11 +339,7 @@ if options.setting == 'manual':
 
 			#print mem
 			sys.stdout = saveout
-<<<<<<< HEAD
 			pix,mem = mapsa.daq().read_data(1,True,True)
-=======
-			pix,mem = mapsa.daq().read_data(1, logfilename='daq1')
->>>>>>> Separate logfiles
 			sys.stdout = Outf1
 			parray = []
 			marray = []
@@ -566,7 +562,7 @@ if options.setting == 'strip':
 			
 
 			mapsa.daq().Sequencer_init(0x0,sdur,mem=1)
-			pix,mem = mapsa.daq().read_data(1, logfilename='daq2')
+			pix,mem = mapsa.daq().read_data(1)
 			print 'reading counts'
 			parray = []
 			marray = []
@@ -889,7 +885,7 @@ if options.setting == 'testbeam' or options.setting == 'default':
 
 		time.sleep(0.1)
 		for cbuff in range(1,5):
-			cpix,cmem = mapsa.daq().read_data(cbuff,wait=False, logfilename='daq3')
+			cpix,cmem = mapsa.daq().read_data(cbuff,wait=False)
 			if options.setting == 'testbeam':
 				ctotal_triggers,ctrigger_counter,ctrigger_total_counter,cOffset_BEAM,cOffset_MPA = mapsa.daq().read_trig(cbuff)
 		time.sleep(0.1)
@@ -945,7 +941,7 @@ if options.setting == 'testbeam' or options.setting == 'default':
      			if sys.stdin in select.select([sys.stdin], [], [], 0)[0] or Kill:
 				 
 				for ibuffer in range(1,5):
-					pix,mem = mapsa.daq().read_data(ibuffer,wait=False, logfilename='daq4')
+					pix,mem = mapsa.daq().read_data(ibuffer,wait=False)
 				a._hw.getNode("Control").getNode('testbeam_mode').write(0x0)
         			line = raw_input()
 				print "Ending loop"
@@ -981,11 +977,7 @@ if options.setting == 'testbeam' or options.setting == 'default':
 				if options.setting == 'testbeam':
 					total_triggers,trigger_counter,trigger_total_counter,Offset_BEAM,Offset_MPA = mapsa.daq().read_trig(ibuffer)
 
-<<<<<<< HEAD
 				pix,mem = mapsa.daq().read_data(ibuffer,wait=False,Fast=True)
-=======
-				pix,mem = mapsa.daq().read_data(ibuffer,wait=False, logfilename='daq5')
->>>>>>> Separate logfiles
 				#print buffers_num
 
 

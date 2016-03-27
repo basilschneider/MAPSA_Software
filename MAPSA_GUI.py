@@ -56,12 +56,8 @@ class TBeamControl:
         self.normalize = e8.get()
         self.direction = e9.get()
         self.loops = e10.get()
-<<<<<<< HEAD
         self.phase = e11.get()
         commandstring = "python daq.py -s %s -r %s -f %s -t %s -T %s -y %s -w %s -N %s -D %s -L %s -p %s" % (self.setting, self.readout, self.formatstring, self.threshold, self.testbeam_clock, self.title, self.shutter_duration, self.normalize,self.direction,self.loops,self.phase)
-=======
-        commandstring = "python daq.py -s %s -r %s -f %s -t %s -T %s -y %s -w %s -N %s -D %s -L %s" % (self.setting, self.readout, self.formatstring, self.threshold, self.testbeam_clock, self.title, self.shutter_duration, self.normalize,self.direction,self.loops)
->>>>>>> Fix bug with number of shutters not properly propagating to daq.py
 	print("pushing function " + commandstring)
         os.system(commandstring) 
 
@@ -154,7 +150,6 @@ lab10.grid(row=12,column=1,pady=5)
 e10=Entry(tbeamui)
 e10.insert(10,tbeam.loops);
 e10.grid(row=12,column=2,pady=5)
-<<<<<<< HEAD
 
 lab11 =  Label(tbeamui, width=20,text="Shutter phase delay",anchor='w')
 lab11.grid(row=13,column=1,pady=5)
@@ -162,8 +157,6 @@ e11=Entry(tbeamui)
 e11.insert(10,tbeam.phase);
 e11.grid(row=13,column=2,pady=5)
 
-=======
->>>>>>> Fix bug with number of shutters not properly propagating to daq.py
 
 
 button_calibration = Button(tbeamui, text="Run Calibration")

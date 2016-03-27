@@ -70,11 +70,7 @@ class MAPSA_daq:
 			self._Readout.getNode("Header").getNode("MPA"+str(i)).write(0xFFFFFFF0+i)
 			self._hw.dispatch()
 
-<<<<<<< HEAD
 	def read_data(self,buffer_num=1,wait=True,Fast=False):
-=======
-	def read_data(self,buffer_num=1,wait=True,logfilename='undefined'):
->>>>>>> Separate logfiles
 		counts = []  
 		mems = []  
 
@@ -95,28 +91,7 @@ class MAPSA_daq:
 
 
 		for i in range(0,len(counts)):
-<<<<<<< HEAD
 			counts[i],mems[i] = MPA(self._hw,i).daq().format(counts[i],mems[i],Fast)
-
-
-
-=======
-			#print mems[i]
-			#print counts[i]
-			counts[i],mems[i] = MPA(self._hw,i).daq().format(counts[i],mems[i])
-		os.system('mkdir -p plots')
-		logfile = 'plots/log_'+logfilename+'.out'
-		with open(logfile, 'a') as f:
-			f.write('Counter:\n')
-			f.write(', '.join(str(i) for i in counts))
-			f.write('\n')
-			f.write('Memory:\n')
-			f.write(', '.join(str(i) for i in mems))
-			f.write('\n')
-		#end = time.time()
-		#print "Formatting "
-		#print (end - start)*1000
->>>>>>> Output raw data
 		return counts,mems
 
 	def read_trig(self,buffer_num=1):
