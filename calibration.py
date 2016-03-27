@@ -55,7 +55,9 @@ help	=	'extra string')
 
 (options, args) = parser.parse_args()
 
-
+def change_individual_pixel(cfg):
+    #cfg.modifypixel(24, "PMR", [1]*6)  # sedAnchor01
+    pass
 
 a = uasic(connection="file://connections_test.xml",device="board0")
 mapsa = MAPSA(a)
@@ -113,6 +115,9 @@ config.upload()
 #        CALDAC controls the injected charge
 confdict = {'OM':[3]*6,'RT':[0]*6,'SCW':[0]*6,'SH2':[0]*6,'SH1':[0]*6,'THDAC':[0]*6,'CALDAC':[options.charge]*6,'PML':[1]*6,'ARL':[1]*6,'CEL':[CE]*6,'CW':[0]*6,'PMR':[1]*6,'ARR':[1]*6,'CER':[CE]*6,'SP':[SP]*6,'SR':[1]*6,'TRIMDACL':[30]*6,'TRIMDACR':[30]*6}
 config.modifyfull(confdict) 
+
+# Basil: Change XML settings from default here
+change_individual_pixel(config)
 
 mapsa.daq().Strobe_settings(snum,sdel,slen,sdist,cal=CE)
 x1 = array('d')
@@ -329,6 +334,8 @@ for x in range(1,25):
 	config1.modifypixel(x,'SP',  [SP]*6) 
 	config1.modifypixel(x,'SR',  [1]*6) 
 
+# Basil: Change XML settings from default here
+change_individual_pixel(config1)
 
 config1.write()
 
