@@ -138,7 +138,7 @@ for x in range(0,256):
 
     # Basil: Here the XML node Counter/MPAx/buffer_1 is read out and assigned
     # to the variable pix; the variable mem is not used at all (?)
-	pix,mem = mapsa.daq().read_data(buffnum, logfilename='calibration_pre')
+	pix,mem = mapsa.daq().read_data(buffnum)
 	ipix=0
 	for p in pix:
 
@@ -358,7 +358,7 @@ for x in range(0,256):
 
 
 			mapsa.daq().Sequencer_init(smode,sdur)
-			pix,mem = mapsa.daq().read_data(buffnum, logfilename='calibration_post')
+			pix,mem = mapsa.daq().read_data(buffnum)
 			ipix=0
 			for p in pix:
 
