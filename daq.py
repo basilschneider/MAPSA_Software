@@ -255,6 +255,10 @@ if options.record=='True':
 		if "TRIG_COUNTS" in key:
 			tree.Branch(key,tree_vars[key],key+"[1]/l")
 	Outf1 = open(logfname, 'w')
+	# Basil: Add raw logfile names with ripple counter and sync output
+	Outf2 = open(logfname+'_counter', 'w')
+	Outf3 = open(logfname+'_memory_bx', 'w')
+	Outf4 = open(logfname+'_memory_data', 'w')
 
 	sys.stdout = Outf1
 	print "Firmware Version " + str(firmver)
@@ -1076,6 +1080,8 @@ if options.setting == 'testbeam' or options.setting == 'default':
 						sys.stdout = Outf1
 						print p
 						print ""
+						sys.stdout = Outf2
+						print p
 						sys.stdout = saveout
 
 						temp_vars["AR_MPA_"+str(i)]=p
@@ -1142,7 +1148,7 @@ if options.setting == 'testbeam' or options.setting == 'default':
 
 
 
-				for p in range(0,96):
+				for p in range(0,97):
 
 					if p>len(memo[0]):
 						memo[0].append(int(0))
@@ -1157,6 +1163,11 @@ if options.setting == 'testbeam' or options.setting == 'default':
 	
 				ev["SR_BX_MPA_"+str(impa)] = BXmemo
 				ev["SR_MPA_"+str(impa)] = DATAmemoint
+				sys.stdout = Outf3
+				print memo[0]
+				sys.stdout = Outf4
+				print memo[1]
+				sys.stdout = saveout
 
 
 
