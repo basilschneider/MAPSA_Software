@@ -1081,7 +1081,7 @@ if options.setting == 'testbeam' or options.setting == 'default':
 						print p
 						print ""
 						sys.stdout = Outf2
-						print p
+						print ' '.join([str(listelement) for listelement in p])
 						sys.stdout = saveout
 
 						temp_vars["AR_MPA_"+str(i)]=p
@@ -1164,9 +1164,9 @@ if options.setting == 'testbeam' or options.setting == 'default':
 				ev["SR_BX_MPA_"+str(impa)] = BXmemo
 				ev["SR_MPA_"+str(impa)] = DATAmemoint
 				sys.stdout = Outf3
-				print memo[0]
+				print ' '.join([str(listelement) for listelement in memo[0]])
 				sys.stdout = Outf4
-				print memo[1]
+				print ' '.join([str(listelement) for listelement in memo[1]])
 				sys.stdout = saveout
 
 
